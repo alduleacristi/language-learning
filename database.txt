@@ -1,0 +1,23 @@
+CREATE DATABASE languagelearning
+
+CREATE TABLE languagelearning.lesson (
+   id_lesson   bigint   NOT NULL   PRIMARY KEY,
+   lesson_name   character varying(128)   NOT NULL
+)
+INSERT INTO languagelearning.level VALUES (1, 'A1');
+
+CREATE TABLE languagelearning.level (
+   id_level   bigint   NOT NULL   PRIMARY KEY,
+   level_name   character varying(32)   NOT NULL
+)
+INSERT INTO languagelearning.level VALUES (1, 'A1');
+
+CREATE TABLE languagelearning.noun (
+   id_noun   bigint   NOT NULL   PRIMARY KEY,
+   german_word   character varying(512)   NOT NULL,
+   romanian_word   character varying(512)   NOT NULL,
+   english_word   character varying(512),
+   add_date   date   NOT NULL,
+   id_level   bigint   NOT NULL   REFERENCES languagelearning.level(id_level),
+   id_lesson   bigint   NOT NULL   REFERENCES languagelearning.lesson(id_lesson)
+)
