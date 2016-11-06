@@ -16,6 +16,13 @@ CREATE TABLE languagelearning.level (
 
 INSERT INTO languagelearning.level VALUES (1, 'A1');
 
+CREATE TABLE article (
+   id_article   bigint   NOT NULL   PRIMARY KEY,
+   german_article   character varying(32)   NOT NULL
+)
+
+INSERT INTO article VALUES (1, 'der');
+
 CREATE TABLE languagelearning.noun (
    id_noun   bigint   NOT NULL   PRIMARY KEY,
    german_word   character varying(512)   NOT NULL,
@@ -24,11 +31,6 @@ CREATE TABLE languagelearning.noun (
    add_date   date   NOT NULL,
    id_level   bigint   NOT NULL   REFERENCES languagelearning.level(id_level),
    id_lesson   bigint   NOT NULL   REFERENCES languagelearning.lesson(id_lesson)
+   id_article   bigint   NOT NULL   REFERENCES article(id_article)
 )
 
-CREATE TABLE article (
-   id_article   bigint   NOT NULL   PRIMARY KEY,
-   german_article   character varying(32)   NOT NULL
-)
-
-INSERT INTO article VALUES (1, 'der');

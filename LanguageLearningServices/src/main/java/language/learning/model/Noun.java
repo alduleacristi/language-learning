@@ -24,6 +24,7 @@ public class Noun implements Serializable {
 	private LocalDate addDate;
 	private Level level;
 	private Lesson lesson;
+	private Article article;
 
 	@Id
 	@Column(name = "id_noun")
@@ -90,5 +91,15 @@ public class Noun implements Serializable {
 
 	public void setLesson(Lesson lesson) {
 		this.lesson = lesson;
+	}
+
+	@ManyToOne
+	@JoinColumn(name = "id_article")
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
 	}
 }
