@@ -1,6 +1,5 @@
 package language.learning.rest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 
 import language.learning.dao.LevelDAO;
 import language.learning.model.Level;
-import language.learning.model.Noun;
 
 @Path("/api")
 @Consumes(MediaType.APPLICATION_JSON)

@@ -4,12 +4,16 @@ CREATE TABLE languagelearning.lesson (
    id_lesson   bigint   NOT NULL   PRIMARY KEY,
    lesson_name   character varying(128)   NOT NULL
 )
-INSERT INTO languagelearning.level VALUES (1, 'A1');
+
+INSERT INTO languagelearning.lesson(
+            id_lesson, lesson_name)
+    VALUES (1, 'Lesson 1'), (2, 'Lesson 2'), (3, 'Lesson 3');
 
 CREATE TABLE languagelearning.level (
    id_level   bigint   NOT NULL   PRIMARY KEY,
    level_name   character varying(32)   NOT NULL
 )
+
 INSERT INTO languagelearning.level VALUES (1, 'A1');
 
 CREATE TABLE languagelearning.noun (

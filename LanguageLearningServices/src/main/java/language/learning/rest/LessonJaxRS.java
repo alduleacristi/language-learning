@@ -11,29 +11,30 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import language.learning.dao.LevelDAO;
+import language.learning.dao.LessonDAO;
 import language.learning.exception.EntityNotFoundException;
-import language.learning.model.Level;
+import language.learning.model.Lesson;
 
 @Path("/api")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class LevelJaxRS {
+public class LessonJaxRS {
 	@Inject
-	private LevelDAO levelDAO;
+	private LessonDAO lessonDAO;
 
 	@GET
-	@Path("/level")
-	public List<Level> getAllLevels() {
-		return levelDAO.getAllLevels();
+	@Path("/lesson")
+	public List<Lesson> getAllLessons() {
+		System.out.println("Trying to get all the lessons");
+		return lessonDAO.getAllLessons();
 	}
 
 	@GET
-	@Path("/levelById")
-	public Level getLevelById(@QueryParam("id") Long idLevel) {
+	@Path("/lessonById")
+	public Lesson getLessonById(@QueryParam("id") Long idLesson) {
 		try {
-			System.out.println("Trying to get level with id: [" + idLevel + "]");
-			return levelDAO.getLevelById(idLevel);
+			System.out.println("Trying to get lesson with id: [" + idLesson + "] Web Service");
+			return lessonDAO.getLessonById(idLesson);
 		} catch (EntityNotFoundException enf) {
 			throw new NotFoundException(enf.getMessage());
 		}

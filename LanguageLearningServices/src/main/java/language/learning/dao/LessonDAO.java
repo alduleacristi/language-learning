@@ -11,32 +11,33 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import language.learning.exception.EntityNotFoundException;
-import language.learning.model.Level;
+import language.learning.model.Lesson;
 
 @Stateless
-public class LevelDAO {
+public class LessonDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	public List<Level> getAllLevels() {
+	public List<Lesson> getAllLessons() {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<Level> criteria = builder.createQuery(Level.class);
-		Root<Level> root = criteria.from(Level.class);
+		CriteriaQuery<Lesson> criteria = builder.createQuery(Lesson.class);
+		Root<Lesson> root = criteria.from(Lesson.class);
 		criteria.select(root);
 
 		return em.createQuery(criteria).getResultList();
 	}
 
-	public Level getLevelById(Long idLevel) throws EntityNotFoundException {
+	public Lesson getLessonById(Long idLesson) throws EntityNotFoundException {
 		try {
+			System.out.println("Trying to get lesson with id: [" + idLesson + "] DAO");
 			CriteriaBuilder builder = em.getCriteriaBuilder();
-			CriteriaQuery<Level> criteria = builder.createQuery(Level.class);
-			Root<Level> root = criteria.from(Level.class);
-			criteria.select(root).where(builder.equal(root.get("idLevel"), idLevel));
+			CriteriaQuery<Lesson> criteria = builder.createQuery(Lesson.class);
+			Root<Lesson> root = criteria.from(Lesson.class);
+			criteria.select(root).where(builder.equal(root.get("idLesson"), idLesson));
 
 			return em.createQuery(criteria).getSingleResult();
 		} catch (NoResultException nre) {
-			throw new EntityNotFoundException("Entity with id [" + idLevel + "] not found");
+			throw new EntityNotFoundException("Entity with id [" + idLesson + "] not found");
 		}
 	}
 }

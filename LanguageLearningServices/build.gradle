@@ -37,8 +37,8 @@ war.archiveName = "language-learning.war"
 
 task deploy (dependsOn: war){
     copy {
-        from "build/libs/temperature-api.war"
-        into "D:/RaspberyPi/Software/wildfly-9.0.2.Final/standalone/deployments"
+        from "build/libs/language-learning.war"
+        into "d:/Android/wildfly-10.1.0.Final/standalone/deployments"
         include "*.war"
     }
 }
