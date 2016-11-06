@@ -25,3 +25,10 @@ CREATE TABLE languagelearning.noun (
    id_level   bigint   NOT NULL   REFERENCES languagelearning.level(id_level),
    id_lesson   bigint   NOT NULL   REFERENCES languagelearning.lesson(id_lesson)
 )
+
+CREATE TABLE article (
+   id_article   bigint   NOT NULL   PRIMARY KEY,
+   german_article   character varying(32)   NOT NULL
+)
+
+INSERT INTO article VALUES (1, 'der');

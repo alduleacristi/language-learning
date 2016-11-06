@@ -28,7 +28,6 @@ public class Level implements Serializable {
 		this.idLevel = idLevel;
 	}
 
-	@Id
 	@Column(name = "level_name")
 	public String getLevelName() {
 		return levelName;

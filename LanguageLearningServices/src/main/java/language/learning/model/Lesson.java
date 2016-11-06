@@ -28,7 +28,6 @@ public class Lesson implements Serializable {
 		this.idLesson = idLesson;
 	}
 
-	@Id
 	@Column(name = "lesson_name")
 	public String getLevelName() {
 		return lessonName;
