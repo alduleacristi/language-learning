@@ -1,5 +1,6 @@
 package language.learning.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import language.learning.convertor.NounConverter;
 import language.learning.dao.NounDAO;
+import language.learning.dto.NounDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Noun;
 
@@ -24,17 +27,24 @@ public class NounJaxRS {
 
 	@GET
 	@Path("/noun")
-	public List<Noun> getAllNouns() {
+	public List<NounDTO> getAllNouns() {
 		System.out.println("Trying to get all the nouns Web service");
-		return nounDAO.getAllNouns();
+		List<NounDTO> nounsDTO = new ArrayList<>();
+
+		nounDAO.getAllNouns().forEach((n) -> {
+			nounsDTO.add(NounConverter.convertToDTO(n));
+		});
+
+		return nounsDTO;
 	}
 
 	@GET
 	@Path("/nounById")
-	public Noun getNounById(@QueryParam("id") Long idNoun) {
+	public NounDTO getNounById(@QueryParam("id") Long idNoun) {
 		try {
 			System.out.println("Trying to get noun with id [" + idNoun + "]");
-			return nounDAO.getNounById(idNoun);
+			Noun noun = nounDAO.getNounById(idNoun);
+			return NounConverter.convertToDTO(noun);
 		} catch (EntityNotFoundException enf) {
 			throw new NotFoundException(enf.getMessage());
 		}

@@ -1,5 +1,6 @@
 package language.learning.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import language.learning.convertor.LessonConvertor;
 import language.learning.dao.LessonDAO;
+import language.learning.dto.LessonDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Lesson;
 
@@ -24,17 +27,22 @@ public class LessonJaxRS {
 
 	@GET
 	@Path("/lesson")
-	public List<Lesson> getAllLessons() {
+	public List<LessonDTO> getAllLessons() {
 		System.out.println("Trying to get all the lessons");
-		return lessonDAO.getAllLessons();
+		List<LessonDTO> lessonsDTO = new ArrayList<>();
+		lessonDAO.getAllLessons().forEach((l) -> {
+			lessonsDTO.add(LessonConvertor.convertToDTO(l));
+		});
+		return lessonsDTO;
 	}
 
 	@GET
 	@Path("/lessonById")
-	public Lesson getLessonById(@QueryParam("id") Long idLesson) {
+	public LessonDTO getLessonById(@QueryParam("id") Long idLesson) {
 		try {
 			System.out.println("Trying to get lesson with id: [" + idLesson + "] Web Service");
-			return lessonDAO.getLessonById(idLesson);
+			Lesson lesson = lessonDAO.getLessonById(idLesson);
+			return LessonConvertor.convertToDTO(lesson);
 		} catch (EntityNotFoundException enf) {
 			throw new NotFoundException(enf.getMessage());
 		}

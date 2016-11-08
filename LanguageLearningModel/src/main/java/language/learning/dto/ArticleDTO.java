@@ -1,27 +1,23 @@
-package language.learning.model;
+package language.learning.dto;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity(name = "article")
-public class Article implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7847276411891522455L;
+public class ArticleDTO {
 	private Long idArticle;
 	private String germanArticle;
 	private String englishArticle;
 	private String romanianArticle;
 
-	@Id
-	@Column(name = "id_article")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public ArticleDTO() {
+		super();
+	}
+
+	public ArticleDTO(Long idArticle, String germanArticle, String englishArticle, String romanianArticle) {
+		super();
+		this.idArticle = idArticle;
+		this.germanArticle = germanArticle;
+		this.englishArticle = englishArticle;
+		this.romanianArticle = romanianArticle;
+	}
+
 	public Long getIdArticle() {
 		return idArticle;
 	}
@@ -30,7 +26,6 @@ public class Article implements Serializable {
 		this.idArticle = idArticle;
 	}
 
-	@Column(name = "german_article")
 	public String getGermanArticle() {
 		return germanArticle;
 	}
@@ -39,7 +34,6 @@ public class Article implements Serializable {
 		this.germanArticle = germanArticle;
 	}
 
-	@Column(name = "english_article")
 	public String getEnglishArticle() {
 		return englishArticle;
 	}
@@ -48,7 +42,6 @@ public class Article implements Serializable {
 		this.englishArticle = englishArticle;
 	}
 
-	@Column(name = "romanian_article")
 	public String getRomanianArticle() {
 		return romanianArticle;
 	}

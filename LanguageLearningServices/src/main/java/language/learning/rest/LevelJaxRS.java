@@ -1,5 +1,6 @@
 package language.learning.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import language.learning.convertor.LevelConvertor;
 import language.learning.dao.LevelDAO;
+import language.learning.dto.LevelDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Level;
 
@@ -24,16 +27,22 @@ public class LevelJaxRS {
 
 	@GET
 	@Path("/level")
-	public List<Level> getAllLevels() {
-		return levelDAO.getAllLevels();
+	public List<LevelDTO> getAllLevels() {
+		List<LevelDTO> levelsDTO = new ArrayList<>();
+		levelDAO.getAllLevels().forEach((l) -> {
+			levelsDTO.add(LevelConvertor.convertToDTO(l));
+		});
+
+		return levelsDTO;
 	}
 
 	@GET
 	@Path("/levelById")
-	public Level getLevelById(@QueryParam("id") Long idLevel) {
+	public LevelDTO getLevelById(@QueryParam("id") Long idLevel) {
 		try {
 			System.out.println("Trying to get level with id: [" + idLevel + "]");
-			return levelDAO.getLevelById(idLevel);
+			Level level = levelDAO.getLevelById(idLevel);
+			return LevelConvertor.convertToDTO(level);
 		} catch (EntityNotFoundException enf) {
 			throw new NotFoundException(enf.getMessage());
 		}

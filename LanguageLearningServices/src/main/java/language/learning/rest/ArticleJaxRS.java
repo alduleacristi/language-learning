@@ -1,5 +1,6 @@
 package language.learning.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,7 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import language.learning.convertor.ArticleConvertor;
 import language.learning.dao.ArticleDAO;
+import language.learning.dto.ArticleDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Article;
 
@@ -24,16 +27,23 @@ public class ArticleJaxRS {
 
 	@GET
 	@Path("/article")
-	public List<Article> getAllArticles() {
-		return articleDAO.getAllArticles();
+	public List<ArticleDTO> getAllArticles() {
+		List<Article> articles = articleDAO.getAllArticles();
+		List<ArticleDTO> articlesDTO = new ArrayList<>();
+		articles.forEach((Article a) -> {
+			articlesDTO.add(ArticleConvertor.convertToDTO(a));
+		});
+		return articlesDTO;
 	}
 
 	@GET
 	@Path("/articleById")
-	public Article getArticleById(@QueryParam("id") Long idArticle) {
+	public ArticleDTO getArticleById(@QueryParam("id") Long idArticle) {
 		try {
 			System.out.println("Trying to get article with id: [" + idArticle + "]");
-			return articleDAO.getArticleById(idArticle);
+			Article article = articleDAO.getArticleById(idArticle);
+
+			return ArticleConvertor.convertToDTO(article);
 		} catch (EntityNotFoundException enf) {
 			throw new NotFoundException(enf.getMessage());
 		}

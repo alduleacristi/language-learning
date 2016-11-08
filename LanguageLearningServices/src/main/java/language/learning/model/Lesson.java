@@ -29,11 +29,11 @@ public class Lesson implements Serializable {
 	}
 
 	@Column(name = "lesson_name")
-	public String getLevelName() {
+	public String getLessonName() {
 		return lessonName;
 	}
 
-	public void setLevelName(String lessonName) {
+	public void setLessonName(String lessonName) {
 		this.lessonName = lessonName;
 	}
 }
