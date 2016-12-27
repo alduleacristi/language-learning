@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_words"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="learning.language.home.languagelearning.AddWordsActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/home_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimaryDark"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="In german"
+        android:ems="10"
+        android:layout_marginTop="63dp"
+        android:id="@+id/germanWord"
+        android:layout_below="@+id/home_toolbar"
+        android:layout_alignLeft="@+id/englishWord"
+        android:layout_alignStart="@+id/englishWord" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="In romanian"
+        android:ems="10"
+        android:layout_marginTop="13dp"
+        android:id="@+id/editText"
+        android:layout_below="@+id/germanWord"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="In english"
+        android:ems="10"
+        android:id="@+id/englishWord"
+        android:layout_below="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginTop="17dp" />
+
+    <Button
+        android:text="Add word"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addWordButton"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/wordType"
+        android:layout_alignLeft="@+id/wordType"
+        android:layout_alignStart="@+id/wordType" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/wordType"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/englishWord"
+        android:layout_alignLeft="@+id/englishWord"
+        android:layout_alignStart="@+id/englishWord"
+        android:layout_alignRight="@+id/englishWord"
+        android:layout_alignEnd="@+id/englishWord" />
+
+</RelativeLayout>
