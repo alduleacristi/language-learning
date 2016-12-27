@@ -1,11 +1,14 @@
 package learning.language.home.laguagelearning.service;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.GenericType;
-import com.sun.jersey.api.client.WebResource;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 
 import language.learning.dto.ArticleDTO;
@@ -17,15 +20,21 @@ import learning.language.home.util.Configuration;
 
 public class ArticleService {
     private final Client webClient;
-    WebResource webResource;
-    Configuration config = Configuration.getInstance();
+    private final Configuration config = Configuration.getInstance();
+    private final Gson gson;
 
     public ArticleService(){
-        webClient = Client.create();
-        webResource = webClient.resource(config.getHost()+":"+config.getPort()+"/language-learning/api/article");
+        webClient = ClientBuilder.newClient();
+        gson = new Gson();
     }
 
     public List<ArticleDTO> getAllArticles(){
-        return webResource.accept(MediaType.APPLICATION_JSON).get(new GenericType<List<ArticleDTO>>(){});
+        String articles = webClient.target(config.getHost()+":"+config.getPort()+"/language-learning/api/article").request().get(String.class);
+
+        Type articlesType = new TypeToken<List<ArticleDTO>>() {
+        }.getType();
+        List<ArticleDTO> articleDTOs = gson.fromJson(articles, articlesType);
+
+        return articleDTOs;
     }
 }

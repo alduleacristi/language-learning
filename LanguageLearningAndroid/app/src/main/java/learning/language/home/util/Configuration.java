@@ -6,7 +6,7 @@ package learning.language.home.util;
 public class Configuration {
     private static Configuration ourInstance = new Configuration();
 
-    private String host = "http://192.168.0.103";
+    private String host = "http://192.168.0.104";
     private int port = 8080;
 
     public static Configuration getInstance() {

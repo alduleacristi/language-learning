@@ -1,6 +1,7 @@
 package learning.language.home.languagelearning;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,11 @@ public class HomeActivity extends MenuBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         Toolbar homeToolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(homeToolbar);
