@@ -13,10 +13,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import language.learning.convertor.LessonConvertor;
+import language.learning.convertor.LevelConvertor;
 import language.learning.dao.LessonDAO;
 import language.learning.dto.LessonDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Lesson;
+import language.learning.model.Level;
 
 @Path("/api")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -30,9 +32,11 @@ public class LessonJaxRS {
 	public List<LessonDTO> getAllLessons() {
 		System.out.println("Trying to get all the lessons");
 		List<LessonDTO> lessonsDTO = new ArrayList<>();
-		lessonDAO.getAllLessons().forEach((l) -> {
-			lessonsDTO.add(LessonConvertor.convertToDTO(l));
-		});
+
+		List<Lesson> lessons = lessonDAO.getAllLessons();
+		for(Lesson lesson:lessons){
+			lessonsDTO.add(LessonConvertor.convertToDTO(lesson));
+		}
 		return lessonsDTO;
 	}
 

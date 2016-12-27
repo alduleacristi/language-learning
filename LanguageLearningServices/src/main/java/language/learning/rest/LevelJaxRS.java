@@ -13,10 +13,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import language.learning.convertor.LevelConvertor;
+import language.learning.convertor.NounConverter;
 import language.learning.dao.LevelDAO;
 import language.learning.dto.LevelDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Level;
+import language.learning.model.Noun;
 
 @Path("/api")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -29,9 +31,11 @@ public class LevelJaxRS {
 	@Path("/level")
 	public List<LevelDTO> getAllLevels() {
 		List<LevelDTO> levelsDTO = new ArrayList<>();
-		levelDAO.getAllLevels().forEach((l) -> {
-			levelsDTO.add(LevelConvertor.convertToDTO(l));
-		});
+
+		List<Level> levels = levelDAO.getAllLevels();
+		for(Level level:levels){
+			levelsDTO.add(LevelConvertor.convertToDTO(level));
+		}
 
 		return levelsDTO;
 	}

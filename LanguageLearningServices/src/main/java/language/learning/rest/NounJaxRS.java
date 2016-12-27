@@ -31,9 +31,10 @@ public class NounJaxRS {
 		System.out.println("Trying to get all the nouns Web service");
 		List<NounDTO> nounsDTO = new ArrayList<>();
 
-		nounDAO.getAllNouns().forEach((n) -> {
-			nounsDTO.add(NounConverter.convertToDTO(n));
-		});
+		List<Noun> nouns = nounDAO.getAllNouns();
+		for(Noun noun:nouns){
+			nounsDTO.add(NounConverter.convertToDTO(noun));
+		}
 
 		return nounsDTO;
 	}

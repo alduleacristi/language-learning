@@ -13,10 +13,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import language.learning.convertor.ArticleConvertor;
+import language.learning.convertor.LevelConvertor;
 import language.learning.dao.ArticleDAO;
 import language.learning.dto.ArticleDTO;
 import language.learning.exception.EntityNotFoundException;
 import language.learning.model.Article;
+import language.learning.model.Level;
 
 @Path("/api")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -30,9 +32,11 @@ public class ArticleJaxRS {
 	public List<ArticleDTO> getAllArticles() {
 		List<Article> articles = articleDAO.getAllArticles();
 		List<ArticleDTO> articlesDTO = new ArrayList<>();
-		articles.forEach((Article a) -> {
-			articlesDTO.add(ArticleConvertor.convertToDTO(a));
-		});
+
+		List<Article> levels = articleDAO.getAllArticles();
+		for(Article article:articles){
+			articlesDTO.add(ArticleConvertor.convertToDTO(article));
+		}
 		return articlesDTO;
 	}
 

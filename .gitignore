@@ -20,7 +20,12 @@ LanguageLearningServices/.settings/
 LanguageLearningServices/.classpath
 LanguageLearningServices/.gitignore
 LanguageLearningServices/.project
+LanguageLearningServices/.idea/
 LanguageLearningServices/build/
+LanguageLearningServices/gradlew
+LanguageLearningServices/gradlew.bat
+LanguageLearningServices/local.properties
+LanguageLearningServices/gradle/
 LanguageLearningServices/bin/
 LanguageLearningAndroid/app/build/
 LanguageLearningAndroid/build/
