@@ -41,4 +41,12 @@ public class NounDAO {
 			throw new EntityNotFoundException("Entity with id [" + idNoun + "] not found");
 		}
 	}
+
+	public Long getNumberOfNouns(){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+		cq.select(cb.count(cq.from(Noun.class)));
+
+		return em.createQuery(cq).getSingleResult();
+	}
 }

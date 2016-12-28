@@ -33,7 +33,7 @@ public class NounConverter {
 
 	public static NounDTO convertToDTO(Noun noun) {
 		NounDTO nounDTO = new NounDTO();
-		nounDTO.setIdNoun(nounDTO.getIdNoun());
+		nounDTO.setIdNoun(noun.getIdNoun());
 		nounDTO.setAddDate(noun.getAddDate());
 		nounDTO.setEnglishWord(noun.getEnglishWord());
 		nounDTO.setGermanWord(noun.getGermanWord());
