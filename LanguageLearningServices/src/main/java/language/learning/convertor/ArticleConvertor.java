@@ -16,8 +16,8 @@ public class ArticleConvertor {
 		ArticleDTO articleDTO = new ArticleDTO();
 		articleDTO.setEnglishArticle(article.getEnglishArticle());
 		articleDTO.setGermanArticle(article.getGermanArticle());
-		articleDTO.setIdArticle(articleDTO.getIdArticle());
-		articleDTO.setRomanianArticle(articleDTO.getRomanianArticle());
+		articleDTO.setIdArticle(article.getIdArticle());
+		articleDTO.setRomanianArticle(article.getRomanianArticle());
 
 		return articleDTO;
 	}

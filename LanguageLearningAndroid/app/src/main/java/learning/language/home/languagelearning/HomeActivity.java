@@ -13,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import learning.language.home.laguagelearning.service.InitializerService;
+import learning.language.home.util.Common;
+
 public class HomeActivity extends MenuBaseActivity {
 
     @Override
@@ -25,12 +28,17 @@ public class HomeActivity extends MenuBaseActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
+        InitializerService initializerService = new InitializerService();
+        initializerService.initializeApp();
+
         Toolbar homeToolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(homeToolbar);
+
+        //Toast.makeText(HomeActivity.this, Common.getInstance().getArticles().size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 

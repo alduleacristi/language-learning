@@ -20,6 +20,7 @@ import java.util.List;
 
 import language.learning.dto.ArticleDTO;
 import learning.language.home.laguagelearning.service.ArticleService;
+import learning.language.home.util.Common;
 
 public class AddWordsActivity extends MenuBaseActivity {
 
@@ -46,12 +47,12 @@ public class AddWordsActivity extends MenuBaseActivity {
 
 
                 String message = "Get all articles: ";
-                ArticleService articleService = new ArticleService();
-                List<ArticleDTO> articles = articleService.getAllArticles();
+                // ArticleService articleService = new ArticleService();
+                //List<ArticleDTO> articles = articleService.getAllArticles();
                 //String articles = articleService.getAllArticles();
+                Common common = Common.getInstance();
 
-
-                Toast.makeText(AddWordsActivity.this, articles.get(0).getGermanArticle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddWordsActivity.this, common.getArticles().get(1L).getGermanArticle(), Toast.LENGTH_SHORT).show();
             }
         });
     }
