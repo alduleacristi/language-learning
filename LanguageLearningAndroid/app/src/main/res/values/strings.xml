@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LanguageLearning</string>
     <string name="action_add_words">Add words</string>
+    <string name="action_exercise_nouns">Noun exercise</string>
     <string name="action_settings">Settings</string>
 
     <string-array name="word_types">

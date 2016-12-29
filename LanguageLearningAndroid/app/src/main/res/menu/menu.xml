@@ -7,6 +7,11 @@
         android:icon="@drawable/ic_favorite_black_48dp"
         android:title="@string/action_add_words"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_exercise_noun"
+        android:icon="@drawable/ic_favorite_black_48dp"
+        android:title="@string/action_exercise_nouns"
+        app:showAsAction="never"/>
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_settings"

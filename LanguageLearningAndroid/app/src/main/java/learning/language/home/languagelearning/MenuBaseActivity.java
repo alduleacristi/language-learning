@@ -36,12 +36,18 @@ public class MenuBaseActivity extends AppCompatActivity {
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
 
-            case R.id.action_add_word:
+            case R.id.action_add_word: {
                 Intent goToAddWords = new Intent(this, AddWordsActivity.class);
                 startActivity(goToAddWords);
 
                 return true;
+            }
+            case R.id.action_exercise_noun:{
+                Intent goToNounExercise = new Intent(this, NounExerciseActivity.class);
+                startActivity(goToNounExercise);
 
+                return true;
+            }
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.

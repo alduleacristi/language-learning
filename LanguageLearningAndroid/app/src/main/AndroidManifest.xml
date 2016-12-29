@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddWordsActivity" />
-        <activity android:name=".MenuBaseActivity"></activity>
+        <activity android:name=".MenuBaseActivity" />
+        <activity android:name=".NounExerciseActivity"></activity>
     </application>
 
 </manifest>
