@@ -2,6 +2,7 @@ package language.learning.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,7 @@ public class Noun implements Serializable {
 	private String germanWord;
 	private String romanianWord;
 	private String englishWord;
-	private LocalDate addDate;
+	private Date addDate;
 	private Level level;
 	private Lesson lesson;
 	private Article article;
@@ -65,11 +66,11 @@ public class Noun implements Serializable {
 	}
 
 	@Column(name = "add_date")
-	public LocalDate getAddDate() {
+	public Date getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(LocalDate addDate) {
+	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
 

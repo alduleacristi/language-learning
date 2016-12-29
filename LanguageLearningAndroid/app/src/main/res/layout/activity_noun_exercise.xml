@@ -25,16 +25,32 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/home_toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-        <Button
-            android:text="German-Romanian"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/GermanToRomanian"
-            android:background="?android:attr/colorControlActivated" />
+            android:layout_height="173dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp">
+
+            <TextView
+                android:text="Number of words"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nrOfNounsLabel"
+                tools:text="Nr of words"
+                android:textSize="18sp"
+                android:layout_marginTop="70dp" />
+
+            <NumberPicker
+                android:layout_width="212dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nrOfNouns"
+                android:descendantFocusability="blocksDescendants"/>
+        </LinearLayout>
 
         <Button
             android:text="Romanian-German"
@@ -43,6 +59,15 @@
             android:id="@+id/RomanianToGerman"
             android:background="?android:attr/colorControlActivated"
             android:layout_marginTop="30dp" />
+
+        <Button
+            android:text="German-Romanian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/GermanToRomanian"
+            android:background="?android:attr/colorControlActivated"
+            android:layout_marginTop="30dp" />
+
     </LinearLayout>
 
 </RelativeLayout>

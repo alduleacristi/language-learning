@@ -16,6 +16,12 @@ LanguageLearningModel/.project
 LanguageLearningModel/.settings/
 LanguageLearningModel/build/
 LanguageLearningModel/bin/
+LanguageLearningModel/.idea/
+LanguageLearningModel/gradle.bat
+LanguageLearningModel/gradle/
+LanguageLearningModel/gradlew
+LanguageLearningModel/local.properties
+LanguageLearningModel/gradlew.bat
 LanguageLearningServices/.settings/
 LanguageLearningServices/.classpath
 LanguageLearningServices/.gitignore

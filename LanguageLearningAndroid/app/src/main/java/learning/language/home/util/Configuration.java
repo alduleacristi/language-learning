@@ -8,6 +8,7 @@ public class Configuration {
 
     private String host = "http://192.168.0.104";
     private int port = 8080;
+    private String resource = "/language-learning/api/";
 
     public static Configuration getInstance() {
         return ourInstance;
@@ -30,5 +31,13 @@ public class Configuration {
 
     public void setPort(int port) {
         this.port = port;
+    }
+
+    public String getResource() {
+        return resource;
+    }
+
+    public void setResource(String resource) {
+        this.resource = resource;
     }
 }

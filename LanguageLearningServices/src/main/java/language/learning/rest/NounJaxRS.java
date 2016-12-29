@@ -61,6 +61,7 @@ public class NounJaxRS {
     @GET
     @Path("/randomNoun")
     public List<NounDTO> getRandomListofNouns(@QueryParam("nrOfNouns") Long nrOfNouns) {
+        System.out.println("A new request arrived for " + nrOfNouns + " random nouns");
         List<NounDTO> nouns = new ArrayList<>();
         try {
             if (nrOfNouns == null) {

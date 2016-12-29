@@ -1,13 +1,14 @@
 package language.learning.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class NounDTO {
 	private Long idNoun;
 	private String germanWord;
 	private String romanianWord;
 	private String englishWord;
-	private LocalDate addDate;
+	private Date addDate;
 	private Long idLevel;
 	private Long idLesson;
 	private Long idArticle;
@@ -16,7 +17,7 @@ public class NounDTO {
 		super();
 	}
 
-	public NounDTO(Long idNoun, String germanWord, String romanianWord, String englishWord, LocalDate addDate,
+	public NounDTO(Long idNoun, String germanWord, String romanianWord, String englishWord, Date addDate,
 			Long idLevel, Long idLesson, Long idArticle) {
 		super();
 		this.idNoun = idNoun;
@@ -61,11 +62,11 @@ public class NounDTO {
 		this.englishWord = englishWord;
 	}
 
-	public LocalDate getAddDate() {
+	public Date getAddDate() {
 		return addDate;
 	}
 
-	public void setAddDate(LocalDate addDate) {
+	public void setAddDate(Date addDate) {
 		this.addDate = addDate;
 	}
 
