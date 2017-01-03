@@ -20,6 +20,7 @@
         <activity android:name=".AddWordsActivity" />
         <activity android:name=".MenuBaseActivity" />
         <activity android:name=".NounExerciseActivity"></activity>
+        <activity android:name=".NounGerRoExerciseActivity"></activity>
     </application>
 
 </manifest>

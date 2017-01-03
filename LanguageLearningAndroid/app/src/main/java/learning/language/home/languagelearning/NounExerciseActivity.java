@@ -1,5 +1,6 @@
 package learning.language.home.languagelearning;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.List;
 
 import language.learning.dto.NounDTO;
@@ -40,9 +44,13 @@ public class NounExerciseActivity extends MenuBaseActivity {
             public void onClick(View view) {
                 int nrOfWords = np.getValue();
                 NounService nounService = new NounService();
-                List<NounDTO> nounDTOs = nounService.getRandomNouns((long) nrOfWords);
+                String nounJSON = nounService.getRandomNouns((long) nrOfWords);
 
-                Toast.makeText(NounExerciseActivity.this, "" + nounDTOs.size(), Toast.LENGTH_SHORT).show();
+                Intent goToGerRoNounExercise = new Intent(NounExerciseActivity.this, NounGerRoExerciseActivity.class);
+                goToGerRoNounExercise.putExtra("nouns", nounJSON);
+                goToGerRoNounExercise.putExtra("noOfWords", nrOfWords);
+                startActivity(goToGerRoNounExercise);
+                //Toast.makeText(NounExerciseActivity.this, "" + nounDTOs.size(), Toast.LENGTH_SHORT).show();
             }
         });
     }

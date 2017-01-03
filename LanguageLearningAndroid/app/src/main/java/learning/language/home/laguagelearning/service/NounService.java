@@ -28,13 +28,9 @@ public class NounService {
         gson = new Gson();
     }
 
-    public List<NounDTO> getRandomNouns(Long nrOfNouns) {
-        String articles = webClient.target(config.getHost() + ":" + config.getPort() + config.getResource() + "randomNoun").queryParam(NR_OF_NOUNS_PARAM, nrOfNouns).request().get(String.class);
+    public String getRandomNouns(Long nrOfNouns) {
+        String nouns = webClient.target(config.getHost() + ":" + config.getPort() + config.getResource() + "randomNoun").queryParam(NR_OF_NOUNS_PARAM, nrOfNouns).request().get(String.class);
 
-        Type nounType = new TypeToken<List<NounDTO>>() {
-        }.getType();
-        List<NounDTO> nounDTOs = gson.fromJson(articles, nounType);
-
-        return nounDTOs;
+        return nouns;
     }
 }
