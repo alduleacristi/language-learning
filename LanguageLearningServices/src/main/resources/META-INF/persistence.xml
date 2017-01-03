@@ -4,32 +4,6 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<!-- <persistence-unit name="groupmanager-mongo" transaction-type="JTA"> -->
-	<!-- <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider> -->
-
-	<!-- <class>org.groupmanager.team.model.User</class> -->
-	<!-- <class>org.groupmanager.team.model.Group</class> -->
-
-	<!-- <properties> -->
-	<!-- <property name="hibernate.transaction.jta.platform" -->
-	<!-- value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.provider" -->
-	<!-- value="org.hibernate.ogm.datastore.mongodb.impl.MongoDBDatastoreProvider" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.database" value="${database}" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.host" value="${persistence.host}" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.port" value="${persistence.port}" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.username" value="${persistence.username}" 
-		/> -->
-	<!-- <property name="hibernate.ogm.datastore.password" value="${persistence.password}" 
-		/> -->
-	<!-- </properties> -->
-	<!-- </persistence-unit> -->
-
 	<persistence-unit name="LanguageLearningDS"
 		transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -37,6 +11,7 @@
 
 		<class>language.learning.model.Level</class>
 		<class>language.learning.model.Noun</class>
+		<class>language.learning.model.User</class>
 
 		<properties>
 			<property name="hibernate.transaction.jta.platform"

@@ -20,7 +20,7 @@ public class UserDTO {
         return email;
     }
 
-    public void setEmai(String emai) {
+    public void setEmail(String emai) {
         this.email = emai;
     }
 }

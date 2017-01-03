@@ -34,3 +34,10 @@ CREATE TABLE languagelearning.noun (
    id_article   bigint   NOT NULL   REFERENCES article(id_article)
 )
 
+CREATE TABLE languagelearning.user (
+   id_user   bigint   NOT NULL   PRIMARY KEY,
+   email   character varying(32)   NOT NULL,
+   password   character varying(64)   NOT NULL
+);
+
+INSERT INTO languagelearning.user VALUES (1, 'alduleacristi@yahoo.com', '1234');
