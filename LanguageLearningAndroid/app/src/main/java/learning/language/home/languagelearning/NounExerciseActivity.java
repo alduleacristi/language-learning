@@ -15,6 +15,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import language.learning.dto.NounDTO;
+import learning.language.home.exception.RemoteInvocationFailed;
 import learning.language.home.laguagelearning.service.NounService;
 
 public class NounExerciseActivity extends MenuBaseActivity {
@@ -42,15 +43,18 @@ public class NounExerciseActivity extends MenuBaseActivity {
         germanToRomanianButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int nrOfWords = np.getValue();
-                NounService nounService = new NounService();
-                String nounJSON = nounService.getRandomNouns((long) nrOfWords);
+                try {
+                    int nrOfWords = np.getValue();
+                    NounService nounService = new NounService(NounExerciseActivity.this);
+                    String nounJSON = nounService.getRandomNouns((long) nrOfWords);
 
-                Intent goToGerRoNounExercise = new Intent(NounExerciseActivity.this, NounGerRoExerciseActivity.class);
-                goToGerRoNounExercise.putExtra("nouns", nounJSON);
-                goToGerRoNounExercise.putExtra("noOfWords", nrOfWords);
-                startActivity(goToGerRoNounExercise);
-                //Toast.makeText(NounExerciseActivity.this, "" + nounDTOs.size(), Toast.LENGTH_SHORT).show();
+                    Intent goToGerRoNounExercise = new Intent(NounExerciseActivity.this, NounGerRoExerciseActivity.class);
+                    goToGerRoNounExercise.putExtra("nouns", nounJSON);
+                    goToGerRoNounExercise.putExtra("noOfWords", nrOfWords);
+                    startActivity(goToGerRoNounExercise);
+                } catch (RemoteInvocationFailed remoteInvocationFailed) {
+                    Toast.makeText(NounExerciseActivity.this, remoteInvocationFailed.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

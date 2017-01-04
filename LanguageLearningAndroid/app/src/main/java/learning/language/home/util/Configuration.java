@@ -6,9 +6,11 @@ package learning.language.home.util;
 public class Configuration {
     private static Configuration ourInstance = new Configuration();
 
-    private String host = "http://192.168.0.104";
-    private int port = 8080;
+    private String host = "https://192.168.0.104";
+    private int port = 8443;
     private String resource = "/language-learning/api/";
+    private String trustManagerPassword = "LLpass1q2w3e";
+    private String keyStoreManagerPassword = "keypassword";
 
     public static Configuration getInstance() {
         return ourInstance;
@@ -39,5 +41,21 @@ public class Configuration {
 
     public void setResource(String resource) {
         this.resource = resource;
+    }
+
+    public String getTrustManagerPassword() {
+        return trustManagerPassword;
+    }
+
+    public void setTrustManagerPassword(String trustManagerPassword) {
+        this.trustManagerPassword = trustManagerPassword;
+    }
+
+    public String getKeyStoreManagerPassword() {
+        return keyStoreManagerPassword;
+    }
+
+    public void setKeyStoreManagerPassword(String keyStoreManagerPassword) {
+        this.keyStoreManagerPassword = keyStoreManagerPassword;
     }
 }

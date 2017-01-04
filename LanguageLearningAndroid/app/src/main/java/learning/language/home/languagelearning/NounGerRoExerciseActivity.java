@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import language.learning.dto.NounDTO;
+import learning.language.home.exception.RemoteInvocationFailed;
 import learning.language.home.laguagelearning.service.NounService;
 import learning.language.home.model.ExerciseModel;
 
@@ -198,10 +199,14 @@ public class NounGerRoExerciseActivity extends MenuBaseActivity {
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NounService nounService = new NounService();
-                String nounsJSON = nounService.getRandomNouns(nrOfWords);
+                try {
+                    NounService nounService = new NounService(NounGerRoExerciseActivity.this);
+                    String nounsJSON = nounService.getRandomNouns(nrOfWords);
 
-                initializeActivity(nounsJSON);
+                    initializeActivity(nounsJSON);
+                } catch (RemoteInvocationFailed remoteInvocationFailed) {
+                    Toast.makeText(NounGerRoExerciseActivity.this, remoteInvocationFailed.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

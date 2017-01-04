@@ -13,6 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+
+import learning.language.home.exception.RemoteInvocationFailed;
 import learning.language.home.laguagelearning.service.InitializerService;
 import learning.language.home.util.Common;
 
@@ -28,13 +35,17 @@ public class HomeActivity extends MenuBaseActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
-        InitializerService initializerService = new InitializerService();
-        initializerService.initializeApp();
+        InitializerService initializerService = null;
+        try {
+            initializerService = new InitializerService(this);
+
+            initializerService.initializeApp();
+        } catch (RemoteInvocationFailed remoteInvocationFailed) {
+            Toast.makeText(HomeActivity.this, remoteInvocationFailed.getMessage(), Toast.LENGTH_LONG).show();
+        }
 
         Toolbar homeToolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(homeToolbar);
-
-        //Toast.makeText(HomeActivity.this, Common.getInstance().getArticles().size(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
